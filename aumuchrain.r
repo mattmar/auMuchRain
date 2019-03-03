@@ -7,9 +7,11 @@ x2=as.numeric(args[2])
 rainDavis<-function(longtime=TRUE,shortime=TRUE,grain="%d",gap=2) { 
 	library(gridExtra)
 	library(grid)
+	library(utils)
+	library(ggplot2)
 
 	download.file("http://apps.atm.ucdavis.edu/wxdata/data/RR_Rain_mm.zip",destfile="/tmp/RR_Rain_mm.zip",extra="unzip")
-	unzip(zipfile='/tmp/RR_Rain_mm.zip',overwrite=TRUE)
+	unzip(zipfile='/tmp/RR_Rain_mm.zip', exdir="/tmp/", overwrite=TRUE)
 	rain<-read.csv('/tmp/RR_Rain_mm.csv',header=FALSE)
 
 	if(longtime) {
